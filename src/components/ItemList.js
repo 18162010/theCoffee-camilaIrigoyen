@@ -1,7 +1,7 @@
 import Item from "./Item";
 
 //agrupador de item se debe incluir dentro del item list container//
-const ItemList = (products) => {
+const ItemList = ({products}) => {
     return (   
         <>         
          <h1>item list</h1>
