@@ -1,17 +1,18 @@
+
+import "./item.css";
 import Item from "./Item";
 
-//agrupador de item se debe incluir dentro del item list container//
+
 const ItemList = ({products}) => {
     return (   
-        <>         
-         <h1>item list</h1>
+        <div className="lista">         
          {products.map((product)=>(
             <Item key={product.id} product={product}/>
 
          ))}
 
     
-         </>
+         </div>
     );}
      
 
