@@ -19,9 +19,11 @@ const Item = ({product}) => {
         </Card.Text>
         <Link to={`/item/${product.id}`}>
         <Button variant="primary">
-          Ver detalle
-        </Button>
-        </Link>
+         Ver detalle
+         </Button>
+         </Link>
+       
+        
       </Card.Body>
     </Card>
   );

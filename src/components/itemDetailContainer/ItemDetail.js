@@ -1,8 +1,8 @@
-import Item from "../ItemList/Item";
-import { useState } from "react";
+
 import ItemCount from "../ItemCount"; 
-import { Button, Card, Container } from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import {Link} from "react-bootstrap";
+import Item from "../ItemList/Item";
 
 const ItemDetail = ({product}) => {
     const onAdd = (cantidad) => {console.log(cantidad)}
