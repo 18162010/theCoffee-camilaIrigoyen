@@ -1,17 +1,18 @@
 import Container from 'react-bootstrap/Container';
 import Button from "react-bootstrap/Button";
 import { onClick } from "react-bootstrap";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-
-
-const ItemCount = ({ stock, initial, onAdd }) => {
+const ItemCount = ({ stock, initial}) => {
     const [counter, setCounter] = useState(initial)
 
+    useEffect(() =>{
+        setCounter(parseInt(initial));},[initial])
 
     const sumar = () => {
         if (counter < stock) {
             setCounter(counter + 1)
+    
         }
     };
     const restar = () => {
@@ -21,11 +22,12 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     }
 
     return (
-        <>
-            <button onClick={() => sumar()} >+</button>
-            <h4> {counter}</h4>
-            <button onClick={() => restar()} >-</button>
-        </>
+        <div class="itemCount">
+            <Button variant="success" onClick={() => sumar()} >+</Button>
+            <h4 variant="success">{counter}</h4>
+            <Button variant="outline-primary">Agregar al carrito</Button>{' '}
+            <Button variant="danger" onClick={() => restar()} >-</Button>
+        </div>
 
 
     )

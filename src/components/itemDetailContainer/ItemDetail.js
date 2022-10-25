@@ -1,12 +1,18 @@
-
 import ItemCount from "../ItemCount"; 
 import {Card} from "react-bootstrap";
-import {Link} from "react-bootstrap";
-import Item from "../ItemList/Item";
+import { useState} from "react";
+
+
+
 
 const ItemDetail = ({product}) => {
-    const onAdd = (cantidad) => {console.log(cantidad)}
-    console.log(product)
+  const [appear,setAppear]= useState(true);}
+  
+
+  const handleClick = (cantidad) => {
+    setCounter (cantidad)
+    setAppear (false);
+  
  return (
         <>  
         <Card style={{ width: '18rem' }}>
@@ -22,10 +28,11 @@ const ItemDetail = ({product}) => {
           </Card.Text>
         </Card.Body>
       </Card>
-      <ItemCount stock={5} initial={1} onAdd={onAdd}/>
+      <ItemCount stock={5} initial={1} onAdd={handleClick}/>
         </>
-        );
-}
+        );}
+ 
+        export default ItemDetail;
 
 
 
@@ -33,5 +40,4 @@ const ItemDetail = ({product}) => {
 
 
  
-export default ItemDetail;
 
