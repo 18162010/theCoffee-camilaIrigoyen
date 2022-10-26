@@ -1,8 +1,8 @@
 import { createContext, useState} from "react";
 
 
-const cartContext =createContext(); 
-export default cartContext;
+const CartContext =createContext(); 
+export default CartContext;
 
 export const CartProvider= ({children}) =>{
     const [cart,setCart] = useState ([]); 
@@ -23,7 +23,7 @@ const addItem = (product,quantity) => {
        
 
     const removeItem= (itemId) => {
-        const cartDraft= cart.filter ((item) => item.id === itemId);
+        const cartDraft= cart.filter ((item) => item.id !== itemId);
         setCart(cartDraft)}
     const clearCart = ()=> {
         setCart ([]);}
@@ -38,3 +38,4 @@ const addItem = (product,quantity) => {
         )         
     };
    
+    //agregar la funcion de total//

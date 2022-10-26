@@ -1,13 +1,13 @@
 import ItemCount from "../ItemCount";
 import { useContext, useState} from "react";
-import cartContext from "../context/cartContext";
+import CartContext from "../context/cartContext";
 import "./itemDetail.css"
 import {Button} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Item from "../ItemList/Item"; 
 
 const ItemDetail = ({ product }) => {
-  const { addItem } = useContext(cartContext);
+  const { addItem } = useContext(CartContext);
   const [counter, setCounter] = useState(0);
   const [Appear, setAppear] = useState(true);
   
@@ -17,7 +17,10 @@ const ItemDetail = ({ product }) => {
     setCounter (value)
     setAppear (false);
     addItem(product, value);}
+
     
+          
+
   
  return (
  <div className="ItemDetail">
@@ -28,7 +31,7 @@ const ItemDetail = ({ product }) => {
         {!Appear && (
         <Link to='/Cart'>
             <Button variant="success">
-                Ir al Carrito
+               Terminar compra
             </Button>
         </Link>
     )}

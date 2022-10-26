@@ -12,6 +12,8 @@ const ItemDetailContainer = () => {
     
     const [product, setProduct]=useState()
     const{id}=useParams();
+    
+   
 
     useEffect(() =>{
         
@@ -19,13 +21,14 @@ const ItemDetailContainer = () => {
         .then((data) => {
             setProduct(data)
         })
-        .catch (error=> console.warn(error))},[id])
+        },[id])
 
         return(
             <Container>
                 <h1>detalle del producto</h1>
                {product && <ItemDetail product={product}/>} 
                 </Container>
+            
 
         ); }
 
