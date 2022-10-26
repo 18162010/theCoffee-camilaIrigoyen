@@ -1,36 +1,41 @@
-import ItemCount from "../ItemCount"; 
-import {Card} from "react-bootstrap";
-import { useState} from "react";
+import ItemCount from "../ItemCount";
+import { useContext, useState} from "react";
+import cartContext from "../context/cartContext";
+import "./itemDetail.css"
+import {Button} from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Item from "../ItemList/Item"; 
 
-
-
-
-const ItemDetail = ({product}) => {
-  const [appear,setAppear]= useState(true);}
+const ItemDetail = ({ product }) => {
+  const { addItem } = useContext(cartContext);
+  const [counter, setCounter] = useState(0);
+  const [Appear, setAppear] = useState(true);
   
 
-  const handleClick = (cantidad) => {
-    setCounter (cantidad)
+
+  const handleAdd = (value) => {
+    setCounter (value)
     setAppear (false);
+    addItem(product, value);}
+    
   
  return (
-        <>  
-        <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={product.pictureUrl} />
-        <Card.Body>
-          <Card.Title>{product.title}</Card.Title>
-          <Card.Text>
-            $ {product.price}
-            </Card.Text>
-            <Card.Text>
-            {product.description}
-            {product.unidadesPorEnvase}
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <ItemCount stock={5} initial={1} onAdd={handleClick}/>
-        </>
-        );}
+ <div className="ItemDetail">
+        <Item product={product} />
+        {Appear && (
+            <ItemCount initial={1} Stock={10} onAdd={handleAdd}/>
+        )}
+        {!Appear && (
+        <Link to='/Cart'>
+            <Button variant="success">
+                Ir al Carrito
+            </Button>
+        </Link>
+    )}
+    </div>
+    );
+}
+       
  
         export default ItemDetail;
 

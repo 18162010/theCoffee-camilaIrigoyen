@@ -1,10 +1,8 @@
-import Container from 'react-bootstrap/Container';
 import Button from "react-bootstrap/Button";
-import { onClick } from "react-bootstrap";
 import { useEffect, useState } from 'react';
 
-const ItemCount = ({ stock, initial}) => {
-    const [counter, setCounter] = useState(initial)
+const ItemCount = ({ stock, initial,onAdd}) => {
+    const [counter, setCounter] =  useState(parseInt(initial));
 
     useEffect(() =>{
         setCounter(parseInt(initial));},[initial])
