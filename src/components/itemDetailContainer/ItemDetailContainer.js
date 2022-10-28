@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
-import {products} from "../utils/products";
 import { getProduct } from "../utils/products";
 
 

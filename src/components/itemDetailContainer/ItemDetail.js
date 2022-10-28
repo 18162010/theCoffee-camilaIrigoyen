@@ -1,4 +1,4 @@
-import ItemCount from "../ItemCount";
+import ItemCount from "../itemCount/ItemCount";
 import { useContext, useState} from "react";
 import CartContext from "../context/cartContext";
 import "./itemDetail.css"
@@ -8,7 +8,7 @@ import Item from "../ItemList/Item";
 
 const ItemDetail = ({ product }) => {
   const { addItem } = useContext(CartContext);
-  const [counter, setCounter] = useState(0);
+  const [counter,setCounter] = useState(0);
   const [Appear, setAppear] = useState(true);
   
 
@@ -18,31 +18,24 @@ const ItemDetail = ({ product }) => {
     setAppear (false);
     addItem(product, value);}
 
-    
-          
-
+ 
   
  return (
  <div className="ItemDetail">
         <Item product={product} />
-        {Appear && (
+        {Appear ? (
             <ItemCount initial={1} Stock={10} onAdd={handleAdd}/>
-        )}
-        {!Appear && (
-        <Link to='/Cart'>
+        ):(<Link to='/Cart'>
             <Button variant="success">
-               Terminar compra
-            </Button>
-        </Link>
-    )}
-    </div>
-    );
-}
-       
- 
+                Terminar compra
+                </Button>
+                </Link>)}
+                </div>
+ );}
+        
         export default ItemDetail;
 
-
+      
 
     
 

@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import {getProductByCategory, getAllProducts} from "../utils/products";
+import{getProductsByCategory, getAllProducts} from "../utils/products";
 import ItemList from "../ItemList/ItemList";
 import { useParams } from "react-router-dom";
+
+
 
 
 const ItemListContainer = ({greeting}) => {
@@ -9,7 +11,7 @@ const ItemListContainer = ({greeting}) => {
     const [products,setProducts]=useState([]);
     
     useEffect(() =>{if (categoryId){
-        getProductByCategory(categoryId)
+        getProductsByCategory(categoryId)
         .then ((data)=>setProducts (data))
         .catch ((error) => console.warn (error))
 
@@ -18,7 +20,6 @@ else { getAllProducts()
     .then ((data)=>setProducts (data))
         .catch ((error) => console.warn (error))
 }}, [categoryId])
-
  
 return (
         <div> 

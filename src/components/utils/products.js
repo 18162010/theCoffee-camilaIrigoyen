@@ -1,38 +1,61 @@
-export const products=[
-    {id:1, title: "Variado", category:"DolceGusto" ,description: "lungo",unidadesPorEnvase: "16",price:"100",pictureUrl:"https://thumbs.dreamstime.com/b/nescafe-dolce-gusto-c%C3%A1psulas-de-caf%C3%A9-aisladas-en-fondo-blanco-enero-milan-italy-set-top-view-lisa-y-lija-plana-obtenida-la-207426709.jpg"},
-    {id:2, title: "Cappuccino",category:"DolceGusto", description: "lungo", unidadesPorEnvase: "8",price:"100",pictureUrl:"https://www.deskidea.com/12138-large_default/cafe-dolce-gusto-capuchino-monodosis-caja-de-8-unidades.jpg"},
-    {id:3, title: "Ristretto",category:"Nespresso", description: "lungo",unidadesPorEnvase: "8",price:"100",pictureUrl:"https://www.nespresso.com/shared_res/agility/n-components/pdp/sku-main-info/coffee-sleeves/ol/ispirazione-roma_L.png?impolicy=medium&imwidth=600"},
-    {id:4, title: "Mix", category:"Nespresso",description: "lungo",unidadesPorEnvase: "8",price:"100",pictureUrl:"https://capsulasnespresso.com/wp-content/uploads/2018/03/admin-ajax.php_-300x137.png"},
-]
+import { addDoc, collection, doc, getDoc, getDocs, getFirestore, query, where } from "firebase/firestore";
 
+export const getAllProducts = () => {
+  const database = getFirestore();
+  const collectionReference = collection(database, 'items');
 
-export const  getAllProducts= () => {
-    const promise = new Promise ((resolve)=> {
-        setTimeout (() =>{
-            return resolve (products); 
-        },2000)
+  return getDocs(collectionReference)
+    .then(snapshot => {
+      const list = snapshot
+        .docs
+        .map((doc) => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+      return list;
     })
-return promise
- };
+    .catch(error => console.warn(error))
+};
 
- 
-
- export const getProduct = (id) =>{
-    const promise =new Promise ((resolve) => {
-        const result = products.find((product) => product.id === parseInt(id))
-        setTimeout (() =>{
-            return resolve (result);
-        },2000)
+export const getProduct = (id) => {
+  const database = getFirestore();
+  const itemReference = doc(database, 'items', id);
+  return getDoc(itemReference)
+    .then(snapshot => {
+      if(snapshot.exists()) {
+        const item = {
+          id: snapshot.id,
+          ...snapshot.data()
+        };
+        return item;
+      }
     })
- return promise;
 
- };
-   
-export const getProductByCategory = (categoryId)=>{
-    const promise =new Promise ((resolve) => {
-    const shows =products.filter((product) => product.category === categoryId);
-    setTimeout(() => {
-        return resolve(shows);
-    },2000)
+};
+
+export const getProductsByCategory = (categoryId) => {
+  // obtenemos la basedatos
+  const database = getFirestore();
+
+  // obtenemos la referencia a la collecion
+  const collectionReference = collection(database, 'items');
+
+  // crear query/consulta con el filtro que queremos aplicar
+  const collectionQuery = query(collectionReference, where('category', '==', categoryId))
+
+  // obtenemos los datos desde firestore
+  return getDocs(collectionQuery)
+    .then(snapshot => {
+      if (snapshot.size === 0)
+        return [];
+
+      const list = snapshot
+        .docs
+        .map((doc) => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+      return list;
     })
-        return promise};
+    .catch(error => console.warn(error))
+};

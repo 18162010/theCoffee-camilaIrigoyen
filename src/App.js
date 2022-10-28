@@ -6,18 +6,17 @@ import {BrowserRouter,Routes,Route} from "react-router-dom";
 import Cart from './components/Cart/Cart';
 import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
 import Checkout from './components/Cart/Checkout';
-import CartContext, { CartProvider } from './components/context/cartContext';
-
+import { CartProvider } from './components/context/cartContext';
 
 
 function App() {
-  return (
-
-    <BrowserRouter>
+ 
+return (
+  <BrowserRouter>
   <CartProvider>       
     <NavBar/>
         <Routes>
-          <Route path='/' element={<ItemListContainer greeting={"promociones"}/>}/>
+          <Route path='/' element={<ItemListContainer />}/>
           <Route path = 'category/:categoryId'  element={<ItemListContainer greeting={"promociones"}/>}/>
           <Route path='/Cart' element={<Cart/>}/>
           <Route path= '/item/:id' element={<ItemDetailContainer/>}/>

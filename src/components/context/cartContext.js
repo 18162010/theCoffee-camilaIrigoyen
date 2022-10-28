@@ -15,7 +15,7 @@ const addItem = (product,quantity) => {
     else{
         const itemIndex = cart.findIndex((item) => item.id === parseInt (product.id));
         const itemDraft = {...cart[itemIndex]};
-        itemDraft.quantity = itemDraft.quantity + quantity
+        itemDraft.quantity = itemDraft.quantity + quantity;
         const cartDraft= [...cart];
         cartDraft[itemIndex] = itemDraft;
         setCart(cartDraft);}}
@@ -24,18 +24,20 @@ const addItem = (product,quantity) => {
 
     const removeItem= (itemId) => {
         const cartDraft= cart.filter ((item) => item.id !== itemId);
-        setCart(cartDraft)}
+        setCart(cartDraft);}
+
     const clearCart = ()=> {
         setCart ([]);}
+
         const isInCart = (id) => cart.some ((item) => item.id === parseInt (id));
 
+    const total = cart.reduce((counter,item)=> counter + (item.price * item.quantity),0);
+
+     const totalQuantity= cart.reduce ((counter,item)=> counter + item.quantity,0);
+        
+
         return (
-            <CartContext.Provider value={{cart,addItem,isInCart,removeItem,clearCart}}>   
+            <CartContext.Provider value={{cart,addItem,isInCart,removeItem,clearCart,total,totalQuantity}}>   
         {children}
-        </CartContext.Provider>
-
-
-        )         
-    };
-   
-    //agregar la funcion de total//
+        </CartContext.Provider>) };       
+    
