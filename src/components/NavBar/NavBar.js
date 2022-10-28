@@ -7,19 +7,18 @@ import "./NavBar.css";
 
 const  NavBar= () => {
     return (                                                                        
-        <Navbar   bg="light" variant="dark">
+    <Navbar   bg="" variant="">
     <Container  className= "containernav">
       <Link to= '/' >
         theCoffee
         </Link>
         <Nav className="me-auto">
-          <Link  to='/'>
+          <Nav.Link class="my-3 mx-2" href='/'>
             Home
-          </Link>
-
-      <Link to= '/category/Nespresso'>Nespresso</Link>
-      <Link to= '/category/DolceGusto'>DolceGusto</Link>
-      </Nav>
+          </Nav.Link>
+          <Nav.Link  class="my-3 mx-2" href= '/category/Nespresso'>Nespresso</Nav.Link>
+          <Nav.Link  class="my-3 mx-2" href='/category/DolceGusto'>DolceGusto</Nav.Link>
+        </Nav>
       <CartWidget className="icono"/>
     </Container>
   </Navbar>
