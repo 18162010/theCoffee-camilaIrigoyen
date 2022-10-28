@@ -7,13 +7,15 @@ import Cart from './components/Cart/Cart';
 import ItemDetailContainer from './components/itemDetailContainer/ItemDetailContainer';
 import Checkout from './components/Cart/Checkout';
 import { CartProvider } from './components/context/cartContext';
+import Container from 'react-bootstrap/Container';
 
 
 function App() {
  
 return (
   <BrowserRouter>
-  <CartProvider>       
+  <CartProvider>
+    <Container>       
     <NavBar/>
         <Routes>
           <Route path='/' element={<ItemListContainer />}/>
@@ -22,6 +24,7 @@ return (
           <Route path= '/item/:id' element={<ItemDetailContainer/>}/>
           <Route path='/checkout' element={<Checkout/>}/>
         </Routes>
+        </Container>
         </CartProvider>
         </BrowserRouter>
     );

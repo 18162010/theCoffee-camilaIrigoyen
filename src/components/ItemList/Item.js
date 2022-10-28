@@ -1,4 +1,4 @@
-//mostrar productos en tu item list container items deben provenir de una promise que los resuelva en un time out de dos segundos//
+
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {Link} from 'react-router-dom';

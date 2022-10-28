@@ -2,7 +2,7 @@ import ItemCount from "../itemCount/ItemCount";
 import { useContext, useState} from "react";
 import CartContext from "../context/cartContext";
 import "./itemDetail.css"
-import {Button} from "react-bootstrap";
+import {Button, Col, Row} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Item from "../ItemList/Item"; 
 
@@ -22,7 +22,11 @@ const ItemDetail = ({ product }) => {
   
  return (
  <div className="ItemDetail">
+    <Row>
+      <Col>
         <Item product={product} />
+      </Col>
+      <Col>
         {Appear ? (
             <ItemCount initial={1} Stock={10} onAdd={handleAdd}/>
         ):(<Link to='/Cart'>
@@ -30,7 +34,9 @@ const ItemDetail = ({ product }) => {
                 Terminar compra
                 </Button>
                 </Link>)}
-                </div>
+      </Col>
+    </Row>
+  </div>
  );}
         
         export default ItemDetail;

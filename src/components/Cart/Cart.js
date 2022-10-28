@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { createOrder } from "../utils/orders";
 import { BsTrash2Fill}  from "react-icons/bs";
 import OrderModal from "../OrderModal/OrderModal";
-import "./Cart.css"
+
 
 
 const buyerMock = {
@@ -43,10 +43,10 @@ const showTable = cart.length > 0
 
 return (
     <Container className='cartContainer'>
-    <h1>Carrito de compras</h1>
+    <h4>Carrito de compras</h4>
     {showTable && (
         <>
-        <Table striped bordered hover variant="dark">
+        <Table striped bordered hover variant="light">
             <thead>
             <tr>
                 <th>Titulo</th>
@@ -67,15 +67,20 @@ return (
             </tbody>
         </Table>
         <h3>Total: $ {total}</h3>
-        <Button variant="dark" onClick={handleOpen}>Finalizar compra</Button>
+        <Button variant="success" onClick={handleOpen}>Finalizar compra</Button>
         </>
     )}
     {!showTable && (
         <>
-        <h2>Vaciar carrito</h2>
+    
+        <h3>Vaciar carrito</h3>
         <Link to='/'>
-            <Button variant="dark">Ver productos</Button>
+            <Button variant="danger">Vaciar carrito</Button>
         </Link>
+        <Link to='/'>
+            <Button variant="success">Ver productos</Button>
+        </Link>
+        
         </>
     )}
     <OrderModal
