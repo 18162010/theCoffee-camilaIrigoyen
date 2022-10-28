@@ -7,7 +7,7 @@ const OrderModal = ({ showModal, onClose, onBuy, orderId}) => {
     return (
     <Modal show={showModal} onHide={onClose}>
         <Modal.Header closeButton>
-        <Modal.Title>Checkout</Modal.Title>
+        <Modal.Title>Finalizar compra</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -15,11 +15,11 @@ const OrderModal = ({ showModal, onClose, onBuy, orderId}) => {
             <Form.Control type="email" placeholder="Ingrese email" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Nombre</Form.Label>
             <Form.Control type="text" placeholder="Ingrese nombre" />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Phone</Form.Label>
+            <Form.Label>Telefono</Form.Label>
             <Form.Control type="text" placeholder="Ingrese telefono" />
         </Form.Group>
         </Modal.Body>
@@ -27,21 +27,21 @@ const OrderModal = ({ showModal, onClose, onBuy, orderId}) => {
         {!orderId && (
             <>
             <Button variant="secondary" onClick={onClose}>
-                Cancel
+                Cancelar
             </Button>
             <Button variant="primary" onClick={onBuy}>
-                To Buy
+               Comprar
             </Button>
             </>
         )}
         {orderId && (
             <div className='footerOrderSuccess'>
             <Alert key='success' variant='success'>
-                Order Number: {orderId}
+                Numero de orden: {orderId}
             </Alert>
             <Link to='/'>
                 <Button variant="success">
-                Buy Again
+                Volver a comprar
                 </Button>
             </Link>
             </div>

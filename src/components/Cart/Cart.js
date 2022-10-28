@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import { createOrder } from "../utils/orders";
 import { BsTrash2Fill}  from "react-icons/bs";
 import OrderModal from "../OrderModal/OrderModal";
+import "./Cart.css"
 
 
 const buyerMock = {
-    name: 'Pablo Serra',
-    phone: '0358-155623687',
-    email: 'pablojaviej@mail.com'
+    name: '',
+    phone: '',
+    email: ''
 }
 
 const Cart = () => {
@@ -42,16 +43,16 @@ const showTable = cart.length > 0
 
 return (
     <Container className='cartContainer'>
-    <h1>Shopping cart</h1>
+    <h1>Carrito de compras</h1>
     {showTable && (
         <>
         <Table striped bordered hover variant="dark">
             <thead>
             <tr>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Amount</th>
-                <th>Action</th>
+                <th>Titulo</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Accion</th>
             </tr>
             </thead>
             <tbody>
@@ -66,14 +67,14 @@ return (
             </tbody>
         </Table>
         <h3>Total: $ {total}</h3>
-        <Button variant="dark" onClick={handleOpen}>Checkout</Button>
+        <Button variant="dark" onClick={handleOpen}>Finalizar compra</Button>
         </>
     )}
     {!showTable && (
         <>
-        <h2>Empty shopping cart</h2>
+        <h2>Vaciar carrito</h2>
         <Link to='/'>
-            <Button variant="dark">See products</Button>
+            <Button variant="dark">Ver productos</Button>
         </Link>
         </>
     )}

@@ -23,7 +23,7 @@ else { getAllProducts()
  
 return (
         <div> 
-            <h1>Productos</h1>
+            <h2>Bienvenidos a la tienda</h2>
             <h3 className="text-bg-primary p-3">{greeting}</h3>
             <ItemList products={products}/>
         </div>
