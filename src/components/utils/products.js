@@ -34,16 +34,16 @@ export const getProduct = (id) => {
 };
 
 export const getProductsByCategory = (categoryId) => {
-  // obtenemos la basedatos
+
   const database = getFirestore();
 
-  // obtenemos la referencia a la collecion
+  
   const collectionReference = collection(database, 'items');
 
-  // crear query/consulta con el filtro que queremos aplicar
+ 
   const collectionQuery = query(collectionReference, where('category', '==', categoryId))
 
-  // obtenemos los datos desde firestore
+  
   return getDocs(collectionQuery)
     .then(snapshot => {
       if (snapshot.size === 0)
