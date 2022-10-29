@@ -13,11 +13,8 @@ const  NavBar= () => {
         theCoffee
         </Link>
         <Nav className="me-auto">
-          <Nav.Link class="my-3 mx-2" href='/'>
-            Home
-          </Nav.Link>
-          <Nav.Link  class="my-3 mx-2" href= '/category/Nespresso'>Nespresso</Nav.Link>
-          <Nav.Link  class="my-3 mx-2" href='/category/DolceGusto'>DolceGusto</Nav.Link>
+          <Link to= '/category/Nespresso' className="my-3 mx-2">Nespresso</Link>
+      <Link to= '/category/DolceGusto'  className="my-3 mx-2">DolceGusto</Link>
         </Nav>
       <CartWidget className="icono"/>
     </Container>

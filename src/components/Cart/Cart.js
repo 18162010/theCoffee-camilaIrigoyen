@@ -74,9 +74,7 @@ return (
         <>
     
         <h3>Vaciar carrito</h3>
-        <Link to='/'>
-            <Button variant="danger">Vaciar carrito</Button>
-        </Link>
+   
         <Link to='/'>
             <Button variant="success">Ver productos</Button>
         </Link>

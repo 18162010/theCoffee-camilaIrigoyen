@@ -14,8 +14,7 @@ function App() {
  
 return (
   <BrowserRouter>
-  <CartProvider>
-    <Container>       
+  <CartProvider>      
     <NavBar/>
         <Routes>
           <Route path='/' element={<ItemListContainer />}/>
@@ -24,7 +23,6 @@ return (
           <Route path= '/item/:id' element={<ItemDetailContainer/>}/>
           <Route path='/checkout' element={<Checkout/>}/>
         </Routes>
-        </Container>
         </CartProvider>
         </BrowserRouter>
     );
